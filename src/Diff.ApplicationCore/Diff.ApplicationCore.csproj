@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Requests\" />
+    <None Remove="Responses\" />
+    <None Remove="DomainObjects\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Requests\" />
+    <Folder Include="Responses\" />
+    <Folder Include="DomainObjects\" />
+  </ItemGroup>
 </Project>
