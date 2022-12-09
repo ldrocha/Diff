@@ -3,7 +3,7 @@
 namespace Diff.Api.Controllers;
 
 [ApiController]
-[Route("/v{version:apiVersion}/[controller]/{Id}")]
+[Route("/v{version:apiVersion}/[controller]/{id}")]
 public class DiffController : ControllerBase
 {
 
@@ -15,26 +15,37 @@ public class DiffController : ControllerBase
     }
 
     [HttpGet]
-    public object Get()
+    public IActionResult Get()
     {
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-        {
-            Date = DateTime.Now.AddDays(index),
-            TemperatureC = Random.Shared.Next(-20, 55),
-        })
-        .ToArray();
+        return new OkObjectResult("");
+    }
+
+    [HttpGet ("left", Name = nameof(GetLeft))]
+    public IActionResult GetLeft()
+    {
+        return new OkObjectResult("");
+    }
+
+    [HttpGet("right")]
+    public IActionResult GetRight([FromRoute] string id)
+    {
+        return new OkObjectResult("");
     }
 
     [HttpPut("left")]
-    public object PutLeft()
+    public IActionResult PutLeft()
     {
-        return Results.Created("string", new object());
+        return new CreatedAtRouteResult(nameof(GetLeft), "teesste");  
     }
 
     [HttpPut("right")]
-    public object PutRight()
+    public IActionResult PutRight([FromRoute] string id)
     {
-        return Results.Created("string", new object());
+
+        var createdResource = new { Id = id, Version = "1" };
+        var actionName = nameof(GetRight);
+        var routeValues = new { id = createdResource.Id, version = createdResource.Version };
+        return CreatedAtAction(actionName, routeValues, createdResource);
     }
 }
 
