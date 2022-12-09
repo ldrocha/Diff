@@ -1,6 +1,7 @@
 ﻿using System;
 
 namespace Diff.ApplicationCore.Requests
+
 {
 	public class RightBase64EncodedBinaryRequest
     {
