@@ -1,6 +1,7 @@
 ﻿using System;
 
 namespace Diff.ApplicationCore.DomainObjects
+
 {
 	public class LeftBase64EncodedBinary
     {
