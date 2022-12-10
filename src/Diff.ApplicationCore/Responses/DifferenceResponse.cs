@@ -3,7 +3,7 @@ using Diff.ApplicationCore.Enums;
 
 namespace Diff.ApplicationCore.Responses
 {
-	public class DifferenceStatusResponse
+	public class DifferenceResponse
 	{ 
 		public DifferenceStatus Status { get; set; } = default!;
 		public DifferenceDetail Detail { get; set; } = default!;

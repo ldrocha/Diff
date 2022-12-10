@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 
 namespace Diff.ApplicationCore.Requests
 
 {
 	public class LeftBase64EncodedBinaryRequest
     {
-		public string Data { get; set; } = default!;
+        [JsonIgnore]
+        public string Id { get; set; } = default!;
+        public string Data { get; set; } = default!;
     }
 }

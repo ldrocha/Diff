@@ -1,4 +1,5 @@
 ﻿using System;
+using Diff.ApplicationCore.Requests;
 using Diff.ApplicationCore.Responses;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,9 +29,9 @@ public class DiffController : ControllerBase
     /// </remarks>
     /// <response code="200">Returns the differece status</response>
     [HttpGet]
-    public ActionResult<DifferenceStatusResponse> Get([FromRoute] string id)
+    public ActionResult<DifferenceResponse> Get([FromRoute] string id)
     {
-        return new OkObjectResult(new DifferenceStatusResponse());
+        return new OkObjectResult(new DifferenceResponse());
     }
 
     /// <summary>
@@ -83,8 +84,12 @@ public class DiffController : ControllerBase
     [HttpPut("left")]
     [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status201Created)]
-    public ActionResult<LeftBase64EncodedBinaryResponse> PutLeft([FromRoute] string version, [FromRoute] string id)
+    public ActionResult<LeftBase64EncodedBinaryResponse> PutLeft(
+        [FromRoute] string version,
+        [FromRoute] string id,
+        [FromBody] LeftBase64EncodedBinaryRequest leftBase64EncodedBinaryRequest)
     {
+        leftBase64EncodedBinaryRequest.Id = id;
         var createdResource = new  LeftBase64EncodedBinaryResponse{ Id = id, Data = "hihi" };
         var actionName = nameof(GetLeft);
         var routeValues = new { id = createdResource.Id, version = version };
@@ -107,8 +112,12 @@ public class DiffController : ControllerBase
     [HttpPut("right")]
     [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status201Created)]
-    public ActionResult<RightBase64EncodedBinaryResponse> PutRight([FromRoute] string version, [FromRoute] string id)
+    public ActionResult<RightBase64EncodedBinaryResponse> PutRight(
+        [FromRoute] string version,
+        [FromRoute] string id,
+        [FromBody] RightBase64EncodedBinaryRequest rightBase64EncodedBinaryRequest)
     {
+        rightBase64EncodedBinaryRequest.Id = id;
         var createdResource = new RightBase64EncodedBinaryResponse { Id = id, Data = "hijhhi" };
         var actionName = nameof(GetRight);
         var routeValues = new { id = createdResource.Id, version = version };
