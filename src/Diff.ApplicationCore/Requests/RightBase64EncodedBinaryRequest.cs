@@ -5,6 +5,6 @@ namespace Diff.ApplicationCore.Requests
 {
 	public class RightBase64EncodedBinaryRequest
     {
-		public string Data { get; set; } = null!;
+		public string Data { get; set; } = default!;
 	}
 }

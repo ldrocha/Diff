@@ -10,10 +10,12 @@
     <None Remove="Requests\" />
     <None Remove="Responses\" />
     <None Remove="DomainObjects\" />
+    <None Remove="Enums\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Requests\" />
     <Folder Include="Responses\" />
     <Folder Include="DomainObjects\" />
+    <Folder Include="Enums\" />
   </ItemGroup>
 </Project>

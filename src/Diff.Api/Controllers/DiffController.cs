@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Diff.ApplicationCore.Responses;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Diff.Api.Controllers;
 
+[ApiVersion("1")]
 [ApiController]
 [Route("/v{version:apiVersion}/[controller]/{id}")]
 public class DiffController : ControllerBase
@@ -14,37 +17,101 @@ public class DiffController : ControllerBase
         _logger = logger;
     }
 
+    /// <summary>
+    /// Get the difference status between left and right from an especific Id
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    ///
+    ///     GET 123
+    ///
+    /// </remarks>
+    /// <response code="200">Returns the differece status</response>
     [HttpGet]
-    public IActionResult Get()
+    public ActionResult<DifferenceStatusResponse> Get([FromRoute] string id)
     {
-        return new OkObjectResult("");
+        return new OkObjectResult(new DifferenceStatusResponse());
     }
 
-    [HttpGet ("left", Name = nameof(GetLeft))]
-    public IActionResult GetLeft()
+    /// <summary>
+    /// Get a Left Base64 Encoded Binary Data
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    ///
+    ///     GET 123/left
+    ///
+    /// </remarks>
+    /// <response code="200">Returns the item</response>
+    [HttpGet ("left")]
+    public ActionResult<LeftBase64EncodedBinaryResponse> GetLeft([FromRoute] string id)
     {
-        return new OkObjectResult("");
+        return new LeftBase64EncodedBinaryResponse();
+
+        //return NotFound();
     }
 
+    /// <summary>
+    /// Get a Right Base64 Encoded Binary Data
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    ///
+    ///     GET 123/right
+    ///
+    /// </remarks>
+    /// <response code="200">Returns the item</response>
     [HttpGet("right")]
-    public IActionResult GetRight([FromRoute] string id)
+    public ActionResult<RightBase64EncodedBinaryResponse> GetRight([FromRoute] string id)
     {
-        return new OkObjectResult("");
+        return new RightBase64EncodedBinaryResponse();
     }
 
+    /// <summary>
+    /// Create or Update a Left Base64 Encoded Binary Data
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    ///
+    ///     PUT 123/left
+    ///     {
+    ///        "data": "aGVsbG8gd29ybGQgISEh",
+    ///     }
+    ///
+    /// </remarks>
+    /// <response code="201">Returns the newly item</response>
     [HttpPut("left")]
-    public IActionResult PutLeft()
+    [Produces("application/json")]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    public ActionResult<LeftBase64EncodedBinaryResponse> PutLeft([FromRoute] string version, [FromRoute] string id)
     {
-        return new CreatedAtRouteResult(nameof(GetLeft), "teesste");  
+        var createdResource = new  LeftBase64EncodedBinaryResponse{ Id = id, Data = "hihi" };
+        var actionName = nameof(GetLeft);
+        var routeValues = new { id = createdResource.Id, version = version };
+        return CreatedAtAction(actionName, routeValues, createdResource);
     }
 
+    /// <summary>
+    /// Create or Update a Right Base64 Encoded Binary Data
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    ///
+    ///     PUT 123/right
+    ///     {
+    ///        "data": "aGVsbG8gd29ybGQgISEh",
+    ///     }
+    ///
+    /// </remarks>
+    /// <response code="201">Returns the newly item</response>
     [HttpPut("right")]
-    public IActionResult PutRight([FromRoute] string id)
+    [Produces("application/json")]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    public ActionResult<RightBase64EncodedBinaryResponse> PutRight([FromRoute] string version, [FromRoute] string id)
     {
-
-        var createdResource = new { Id = id, Version = "1" };
+        var createdResource = new RightBase64EncodedBinaryResponse { Id = id, Data = "hijhhi" };
         var actionName = nameof(GetRight);
-        var routeValues = new { id = createdResource.Id, version = createdResource.Version };
+        var routeValues = new { id = createdResource.Id, version = version };
         return CreatedAtAction(actionName, routeValues, createdResource);
     }
 }
