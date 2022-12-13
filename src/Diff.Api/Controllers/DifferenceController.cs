@@ -110,7 +110,6 @@ public class DiffController : ControllerBase
     /// </remarks>
     /// <response code="201">Returns the newly item</response>
     [HttpPut("left")]
-    [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status201Created)]
     public async Task<ActionResult<LeftBase64EncodedBinaryResponse>> PutLeft(
         [FromRoute] string version,
@@ -142,7 +141,6 @@ public class DiffController : ControllerBase
     /// </remarks>
     /// <response code="201">Returns the newly item</response>
     [HttpPut("right")]
-    [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status201Created)]
     public async Task<ActionResult<RightBase64EncodedBinaryResponse>> PutRight(
         [FromRoute] string version,
