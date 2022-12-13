@@ -6,8 +6,8 @@ namespace Diff.ApplicationCore.Interfaces.Services
 {
 	public interface IRightBase64EncodedBinaryService
 	{
-        RightBase64EncodedBinaryResponse Get(string id);
+        Task<RightBase64EncodedBinaryResponse> Get(string id);
 
-        RightBase64EncodedBinaryResponse AddOrUpdate(RightBase64EncodedBinaryRequest request);
+        Task<RightBase64EncodedBinaryResponse> AddOrUpdate(RightBase64EncodedBinaryRequest request);
     }
 }

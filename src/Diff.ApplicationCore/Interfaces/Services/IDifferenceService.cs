@@ -5,7 +5,7 @@ namespace Diff.ApplicationCore.Interfaces.Services
 {
 	public interface IDifferenceService
 	{
-		DifferenceResponse Get(string id);
+		Task<DifferenceResponse> Get(string id);
 	}
 }
 
