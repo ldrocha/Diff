@@ -45,13 +45,11 @@ namespace Diff.ApplicationCore.Services
             differenceResponse.Status = DifferenceStatus.SameLength;
             differenceResponse.Detail = GetDifferenceDetail (leftBase64EncodedBinary.Data, rightBase64EncodedBinary.Data);
 
-
             return differenceResponse;
         }
 
         public DifferenceDetail GetDifferenceDetail(string leftBase64EncodedBinary, string rightBase64EncodedBinary)
         {
-
             byte[] left = Convert.FromBase64String(leftBase64EncodedBinary);
             byte[] right = Convert.FromBase64String(rightBase64EncodedBinary);
             List<int> offsets = new List<int>();
@@ -70,4 +68,3 @@ namespace Diff.ApplicationCore.Services
         }
     }
 }
-

@@ -1,6 +1,8 @@
 ﻿using System;
+using Diff.ApplicationCore.Interfaces.Services;
 using Diff.ApplicationCore.Requests;
 using Diff.ApplicationCore.Responses;
+using Diff.Infrastructure.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Diff.Api.Controllers;
@@ -11,11 +13,21 @@ namespace Diff.Api.Controllers;
 public class DiffController : ControllerBase
 {
 
-    private readonly ILogger<DiffController> _logger;
+    public ILogger<DiffController> Logger { get; }
+    public IDifferenceService DifferenceService { get; }
+    public ILeftBase64EncodedBinaryService LeftBase64EncodedBinaryService  { get;}
+    public IRightBase64EncodedBinaryService RightBase64EncodedBinaryService { get; }
 
-    public DiffController(ILogger<DiffController> logger)
+    public DiffController(
+        ILogger<DiffController> logger,
+        IDifferenceService differenceService,
+        ILeftBase64EncodedBinaryService leftBase64EncodedBinaryService,
+        IRightBase64EncodedBinaryService rightBase64EncodedBinaryService)
     {
-        _logger = logger;
+        Logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        DifferenceService = differenceService ?? throw new ArgumentNullException(nameof(differenceService));
+        LeftBase64EncodedBinaryService = leftBase64EncodedBinaryService ?? throw new ArgumentNullException(nameof(leftBase64EncodedBinaryService));
+        RightBase64EncodedBinaryService = rightBase64EncodedBinaryService ?? throw new ArgumentNullException(nameof(rightBase64EncodedBinaryService));
     }
 
     /// <summary>
@@ -28,10 +40,16 @@ public class DiffController : ControllerBase
     ///
     /// </remarks>
     /// <response code="200">Returns the differece status</response>
+    /// <response code="404">If one or both items compared do not exist the answer will be not found</response>
     [HttpGet]
-    public ActionResult<DifferenceResponse> Get([FromRoute] string id)
+    public async Task<ActionResult<DifferenceResponse>> Get([FromRoute] string id)
     {
-        return new OkObjectResult(new DifferenceResponse());
+        var response = await DifferenceService.Get(id);
+
+        if (response == null)
+            return NotFound();
+
+        return new OkObjectResult(response);
     }
 
     /// <summary>
@@ -44,12 +62,16 @@ public class DiffController : ControllerBase
     ///
     /// </remarks>
     /// <response code="200">Returns the item</response>
+    /// <response code="404"></response>
     [HttpGet ("left")]
-    public ActionResult<LeftBase64EncodedBinaryResponse> GetLeft([FromRoute] string id)
+    public async Task<ActionResult<LeftBase64EncodedBinaryResponse>> GetLeft([FromRoute] string id)
     {
-        return new LeftBase64EncodedBinaryResponse();
+        var response = await LeftBase64EncodedBinaryService.Get(id);
 
-        //return NotFound();
+        if (response == null)
+            return NotFound();
+
+        return new OkObjectResult(response);
     }
 
     /// <summary>
@@ -62,10 +84,16 @@ public class DiffController : ControllerBase
     ///
     /// </remarks>
     /// <response code="200">Returns the item</response>
+    /// <response code="404"></response>
     [HttpGet("right")]
-    public ActionResult<RightBase64EncodedBinaryResponse> GetRight([FromRoute] string id)
+    public async Task<ActionResult<RightBase64EncodedBinaryResponse>> GetRight([FromRoute] string id)
     {
-        return new RightBase64EncodedBinaryResponse();
+        var response = await LeftBase64EncodedBinaryService.Get(id);
+
+        if (response == null)
+            return NotFound();
+
+        return new OkObjectResult(response);
     }
 
     /// <summary>
@@ -84,16 +112,20 @@ public class DiffController : ControllerBase
     [HttpPut("left")]
     [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status201Created)]
-    public ActionResult<LeftBase64EncodedBinaryResponse> PutLeft(
+    public async Task<ActionResult<LeftBase64EncodedBinaryResponse>> PutLeft(
         [FromRoute] string version,
         [FromRoute] string id,
         [FromBody] LeftBase64EncodedBinaryRequest leftBase64EncodedBinaryRequest)
     {
         leftBase64EncodedBinaryRequest.Id = id;
-        var createdResource = new  LeftBase64EncodedBinaryResponse{ Id = id, Data = "hihi" };
+
+        await LeftBase64EncodedBinaryService.AddOrUpdate(leftBase64EncodedBinaryRequest);
+
+        var response = await LeftBase64EncodedBinaryService.Get(id);
+
         var actionName = nameof(GetLeft);
-        var routeValues = new { id = createdResource.Id, version = version };
-        return CreatedAtAction(actionName, routeValues, createdResource);
+        var routeValues = new { id = response.Id, version = version };
+        return CreatedAtAction(actionName, routeValues, response);
     }
 
     /// <summary>
@@ -112,16 +144,26 @@ public class DiffController : ControllerBase
     [HttpPut("right")]
     [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status201Created)]
-    public ActionResult<RightBase64EncodedBinaryResponse> PutRight(
+    public async Task<ActionResult<RightBase64EncodedBinaryResponse>> PutRight(
         [FromRoute] string version,
         [FromRoute] string id,
         [FromBody] RightBase64EncodedBinaryRequest rightBase64EncodedBinaryRequest)
     {
+        //rightBase64EncodedBinaryRequest.Id = id;
+        //var createdResource = new RightBase64EncodedBinaryResponse { Id = id, Data = "hijhhi" };
+        //var actionName = nameof(GetRight);
+        //var routeValues = new { id = createdResource.Id, version = version };
+        //return CreatedAtAction(actionName, routeValues, createdResource);
+
         rightBase64EncodedBinaryRequest.Id = id;
-        var createdResource = new RightBase64EncodedBinaryResponse { Id = id, Data = "hijhhi" };
-        var actionName = nameof(GetRight);
-        var routeValues = new { id = createdResource.Id, version = version };
-        return CreatedAtAction(actionName, routeValues, createdResource);
+
+        await RightBase64EncodedBinaryService.AddOrUpdate(rightBase64EncodedBinaryRequest);
+
+        var response = await RightBase64EncodedBinaryService.Get(id);
+
+        var actionName = nameof(GetLeft);
+        var routeValues = new { id = response.Id, version = version };
+        return CreatedAtAction(actionName, routeValues, response);
     }
 }
 

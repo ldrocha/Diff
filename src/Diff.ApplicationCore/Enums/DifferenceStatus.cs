@@ -9,4 +9,3 @@ namespace Diff.ApplicationCore.Enums
         SameLength
     }
 }
-
