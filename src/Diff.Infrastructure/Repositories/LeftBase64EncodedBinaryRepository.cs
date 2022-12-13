@@ -56,6 +56,8 @@ namespace Diff.Infrastructure.Repositories
                     context.LeftBase64EncodedBinary.Update(entity);
                 else
                     await context.LeftBase64EncodedBinary.AddAsync(entity);
+
+                await context.SaveChangesAsync();
             }
         }
     }
