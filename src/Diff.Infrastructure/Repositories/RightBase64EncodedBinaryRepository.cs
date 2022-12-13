@@ -51,8 +51,7 @@ namespace Diff.Infrastructure.Repositories
         {
             using (var context = new DiffDbContext())
             {
-                if (context.RightBase64EncodedBinary
-                    .Any(x => x.Id == entity.Id))
+                if (context.RightBase64EncodedBinary.Any(x => x.Id == entity.Id))
                     context.RightBase64EncodedBinary.Update(entity);
                 else
                     await context.RightBase64EncodedBinary.AddAsync(entity);
