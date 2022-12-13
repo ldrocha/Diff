@@ -9,12 +9,21 @@ namespace Diff.ApplicationCore.Responses
         public DifferenceStatus Status { get; set; } = default!;
 		public DifferenceDetail Detail { get; set; } = default!;
 
-        public class DifferenceDetail
+        public DifferenceResponse(string id)
         {
-            public int Lenght { get; set; }
-            public List<int> OffsetDifferences { get; set; } = default!;
+            Id = id;
         }
     }
+
+    public class DifferenceDetail
+    {
+        public DifferenceDetail(int offsetLenght, List<int> differencesOffsets)
+        {
+            OffsetLenght = offsetLenght;
+            DifferencesOffsets = differencesOffsets;
+        }
+
+        public int OffsetLenght { get; set; }
+        public List<int> DifferencesOffsets { get; set; } = default!;
+    }
 }
-
-

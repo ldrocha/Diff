@@ -5,8 +5,8 @@ namespace Diff.ApplicationCore.Enums
     {
         Undefined,
         Equal,
-        DifferentLenght,
-        DifferentData
+        DifferentLength,
+        SameLength
     }
 }
 
