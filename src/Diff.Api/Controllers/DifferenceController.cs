@@ -7,7 +7,7 @@ namespace Diff.Api.Controllers;
 
 [ApiVersion("1")]
 [ApiController]
-[Route("/v{version:apiVersion}/[controller]/{id}")]
+[Route("/v{version:apiVersion}/diff/{id}")]
 public class DiffController : ControllerBase
 {
 
