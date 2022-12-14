@@ -27,13 +27,16 @@
 
 The solution was developed in .Net 6 https://dotnet.microsoft.com/en-us/download/dotnet/6.0.
 
-Main technologies:
+This solution has:
 
+- Layered Architecture
 - SOLID
 - .Net 6
 - C#
-- Swagger
+- Swagger with documentation and prepared to send requests
+- API versioning 
 - EF Core
+- Data Seeding
 - HttpLogging middleware
 - AutoMapper
 - Unity and integration tests in Xunit
