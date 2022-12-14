@@ -25,7 +25,17 @@
 
 # Diff Solution
 
-The solution was developed in .Net 6 C# https://dotnet.microsoft.com/en-us/download/dotnet/6.0
+The solution was developed in .Net 6 https://dotnet.microsoft.com/en-us/download/dotnet/6.0.
+
+Main technologies:
+
+- .Net 6
+- C#
+- Swagger
+- EF Core
+- HttpLogging middleware
+- AutoMapper
+- Unity and integration tests in Xunit
 
 Once running, it can be accessed at https://localhost:7185/swagger/index.html, in this page is the documentation and it's possible to send requests.
 
