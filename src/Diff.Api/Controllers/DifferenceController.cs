@@ -116,6 +116,9 @@ public class DiffController : ControllerBase
         [FromRoute] string id,
         [FromBody] LeftBase64EncodedBinaryRequest leftBase64EncodedBinaryRequest)
     {
+        if (!IsBase64String(leftBase64EncodedBinaryRequest.Data))
+            return BadRequest("Invalid base64 encoded binary");
+
         leftBase64EncodedBinaryRequest.Id = id;
 
         await LeftBase64EncodedBinaryService.AddOrUpdate(leftBase64EncodedBinaryRequest);
@@ -147,6 +150,9 @@ public class DiffController : ControllerBase
         [FromRoute] string id,
         [FromBody] RightBase64EncodedBinaryRequest rightBase64EncodedBinaryRequest)
     {
+        if (!IsBase64String(rightBase64EncodedBinaryRequest.Data))
+            return BadRequest("Invalid base64 encoded binary");
+
         rightBase64EncodedBinaryRequest.Id = id;
 
         await RightBase64EncodedBinaryService.AddOrUpdate(rightBase64EncodedBinaryRequest);
@@ -156,6 +162,12 @@ public class DiffController : ControllerBase
         var actionName = nameof(GetRight);
         var routeValues = new { id = response.Id, version = version };
         return CreatedAtAction(actionName, routeValues, response);
+    }
+
+    public static bool IsBase64String(string base64)
+    {
+        Span<byte> buffer = new Span<byte>(new byte[base64.Length]);
+        return Convert.TryFromBase64String(base64, buffer, out int bytesParsed);
     }
 }
 
