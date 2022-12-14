@@ -29,6 +29,7 @@ The solution was developed in .Net 6 https://dotnet.microsoft.com/en-us/download
 
 Main technologies:
 
+- SOLID
 - .Net 6
 - C#
 - Swagger
@@ -36,6 +37,9 @@ Main technologies:
 - HttpLogging middleware
 - AutoMapper
 - Unity and integration tests in Xunit
+- FluentAssertions
+- AutoFixture
+- NSubstitute
 
 Once running, it can be accessed at https://localhost:7185/swagger/index.html, in this page is the documentation and it's possible to send requests.
 
