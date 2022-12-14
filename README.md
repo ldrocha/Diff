@@ -72,3 +72,47 @@ RESPONSE
 [400] Bad Request
 Bad Request status will be retuned when the string is not a valid base64 encoded binary
 ```
+
+The third Endpoint where the provided data needs to be diff-ed and result should be returned is:
+
+```
+curl -X 'GET' \
+  'https://localhost:7185/v1/diff/11' \
+  -H 'accept: text/plain'
+  
+RESPONSE
+[200] Ok
+{
+  "id": "11",
+  "status": "Equal",
+  "detail": null
+}
+
+[200] Ok
+{
+  "id": "456",
+  "status": "DifferentLength",
+  "detail": null
+}
+
+[200] Ok
+{
+  "id": "789",
+  "status": "SameLength",
+  "detail": {
+    "lenght": 28,
+    "offsetLenght": 6,
+    "differencesOffsets": [
+      8,
+      9,
+      10,
+      16,
+      17,
+      18
+    ]
+  }
+}
+
+[404] Not Found
+Not Found status will be return when one or both items compared do not exist
+```
