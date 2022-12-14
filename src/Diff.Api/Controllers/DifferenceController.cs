@@ -12,7 +12,6 @@ namespace Diff.Api.Controllers;
 [Route("/v{version:apiVersion}/diff/{id}")]
 public class DiffController : ControllerBase
 {
-
     public ILogger<DiffController> Logger { get; }
     public IDifferenceService DifferenceService { get; }
     public ILeftBase64EncodedBinaryService LeftBase64EncodedBinaryService  { get;}
@@ -170,4 +169,3 @@ public class DiffController : ControllerBase
         return Convert.TryFromBase64String(base64, buffer, out int bytesParsed);
     }
 }
-
