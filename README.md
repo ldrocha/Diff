@@ -46,6 +46,21 @@ This solution has:
 
 Once running, it can be accessed at https://localhost:7185/swagger/index.html, in this page is the documentation and it's possible to send requests.
 
+The database is seeded with the following data:
+
+| Table | Columm [Id] | Columm [Data] |
+| ------ | ------ | ------ |
+| LeftBase64EncodedBinaryEntity | 123 | MTIzIDEyMyAxMjMgMTIzIDEyMw== |
+| LeftBase64EncodedBinaryEntity | 456 | NDU2IDQ1NiA0NTYgNDU2IDQ1Ng== |
+| LeftBase64EncodedBinaryEntity | 789 | Nzg5IDc4OSA3ODkgNzg5IDc4OQ== |
+| RightBase64EncodedBinaryEntity | 123 | MTIzIDEyMyAxMjMgMTIzIDEyMw== |
+| RightBase64EncodedBinaryEntity | 456 | NDU2IDQ1NiA0NTYgNDU2IA== |
+| RightBase64EncodedBinaryEntity | 789 | Nzg5IDc4OSAwMDAgNzg5IDAwMA== |
+
+- Data from Left and Right Id 123 are Equal
+- Data from Left and Right Id 456 are DifferentLength
+- Data from Left and Right Id 789 are SameLength with differences
+
 ## Using
 
 The 2 http endpoints that accepts JSON base64 encoded binary data are:
