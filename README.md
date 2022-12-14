@@ -29,8 +29,8 @@ The solution was developed in .Net 6 https://dotnet.microsoft.com/en-us/download
 
 This solution has:
 
-- Layered Architecture
 - SOLID
+- Layered Architecture
 - .Net 6
 - C#
 - Swagger with documentation and prepared to send requests
