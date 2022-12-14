@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Diff.ApplicationCore.AutoMapper;
 using Diff.ApplicationCore.Interfaces.Services;
@@ -10,7 +11,6 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddApiVersioning(opt =>
 {
     opt.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
@@ -20,9 +20,12 @@ builder.Services.AddApiVersioning(opt =>
                                                     new MediaTypeApiVersionReader("x-api-version"));
 });
 
-builder.Services.AddControllers()
-    .AddJsonOptions(options => { options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()); });
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddControllers(options => options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true)
+    .AddJsonOptions(options => {
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+        options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+    });
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
@@ -44,16 +47,11 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 builder.Services.AddAutoMapper(typeof(RequestToEntityProfile), typeof(EntityToResponseProfile));
-
-builder.Services.AddScoped<IDifferenceService, DifferenceService>();
-builder.Services.AddScoped<ILeftBase64EncodedBinaryService, LeftBase64EncodedBinaryService>();
-builder.Services.AddScoped<IRightBase64EncodedBinaryService, RightBase64EncodedBinaryService>();
-builder.Services.AddScoped<ILeftBase64EncodedBinaryRepository, LeftBase64EncodedBinaryRepository>();
-builder.Services.AddScoped<IRightBase64EncodedBinaryRepository, RightBase64EncodedBinaryRepository>();
-
-
-
-
+builder.Services.AddTransient<IDifferenceService, DifferenceService>();
+builder.Services.AddTransient<ILeftBase64EncodedBinaryService, LeftBase64EncodedBinaryService>();
+builder.Services.AddTransient<IRightBase64EncodedBinaryService, RightBase64EncodedBinaryService>();
+builder.Services.AddTransient<ILeftBase64EncodedBinaryRepository, LeftBase64EncodedBinaryRepository>();
+builder.Services.AddTransient<IRightBase64EncodedBinaryRepository, RightBase64EncodedBinaryRepository>();
 
 var app = builder.Build();
 

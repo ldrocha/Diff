@@ -17,13 +17,15 @@ namespace Diff.ApplicationCore.Responses
 
     public class DifferenceDetail
     {
-        public DifferenceDetail(int offsetLenght, List<int> differencesOffsets)
+        public int Lenght { get; set; }
+        public int OffsetLenght { get; set; }
+        public List<int> DifferencesOffsets { get; set; } = default!;
+
+        public DifferenceDetail(int lenght, int offsetLenght, List<int> differencesOffsets)
         {
+            Lenght = lenght;
             OffsetLenght = offsetLenght;
             DifferencesOffsets = differencesOffsets;
         }
-
-        public int OffsetLenght { get; set; }
-        public List<int> DifferencesOffsets { get; set; } = default!;
     }
 }

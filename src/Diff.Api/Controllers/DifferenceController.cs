@@ -88,7 +88,7 @@ public class DiffController : ControllerBase
     [HttpGet("right")]
     public async Task<ActionResult<RightBase64EncodedBinaryResponse>> GetRight([FromRoute] string id)
     {
-        var response = await LeftBase64EncodedBinaryService.Get(id);
+        var response = await RightBase64EncodedBinaryService.Get(id);
 
         if (response == null)
             return NotFound();
@@ -147,19 +147,13 @@ public class DiffController : ControllerBase
         [FromRoute] string id,
         [FromBody] RightBase64EncodedBinaryRequest rightBase64EncodedBinaryRequest)
     {
-        //rightBase64EncodedBinaryRequest.Id = id;
-        //var createdResource = new RightBase64EncodedBinaryResponse { Id = id, Data = "hijhhi" };
-        //var actionName = nameof(GetRight);
-        //var routeValues = new { id = createdResource.Id, version = version };
-        //return CreatedAtAction(actionName, routeValues, createdResource);
-
         rightBase64EncodedBinaryRequest.Id = id;
 
         await RightBase64EncodedBinaryService.AddOrUpdate(rightBase64EncodedBinaryRequest);
 
         var response = await RightBase64EncodedBinaryService.Get(id);
 
-        var actionName = nameof(GetLeft);
+        var actionName = nameof(GetRight);
         var routeValues = new { id = response.Id, version = version };
         return CreatedAtAction(actionName, routeValues, response);
     }

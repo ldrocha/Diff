@@ -35,9 +35,10 @@ namespace Diff.ApplicationCore.Services
 
         public async Task<RightBase64EncodedBinaryResponse> Get(string id)
         {
-            var entity = await RightBase64EncodedBinaryRepository.Get(id);
-            return new RightBase64EncodedBinaryResponse();
+            var entityResponse = await RightBase64EncodedBinaryRepository.Get(id);
+            var response = Mapper.Map<RightBase64EncodedBinaryResponse>(entityResponse);
+
+            return response;
         }
     }
 }
-

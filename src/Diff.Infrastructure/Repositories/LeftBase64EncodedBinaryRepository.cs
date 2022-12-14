@@ -12,27 +12,31 @@ namespace Diff.Infrastructure.Repositories
         {
             using (var context = new DiffDbContext())
             {
-                var list = new List<LeftBase64EncodedBinaryEntity>
-                {
-                    new LeftBase64EncodedBinaryEntity
-                    {
-                        Id = "123",
-                        Data = "MTIzIDEyMyAxMjMgMTIzIDEyMw=="
-                    },
-                    new LeftBase64EncodedBinaryEntity
-                    {
-                        Id = "456",
-                        Data = "NDU2IDQ1NiA0NTYgNDU2IDQ1Ng=="
-                    },
-                    new LeftBase64EncodedBinaryEntity
-                    {
-                        Id = "456",
-                        Data = "Nzg5IDc4OSA3ODkgNzg5IDc4OQ=="
-                    },
-                };
+                context.Database.EnsureCreated();
+                //if (!context.LeftBase64EncodedBinary.Any())
+                //{
+                //    var list = new List<LeftBase64EncodedBinaryEntity>
+                //    {
+                //        new LeftBase64EncodedBinaryEntity
+                //        {
+                //            Id = "123",
+                //            Data = "MTIzIDEyMyAxMjMgMTIzIDEyMw=="
+                //        },
+                //        new LeftBase64EncodedBinaryEntity
+                //        {
+                //            Id = "456",
+                //            Data = "NDU2IDQ1NiA0NTYgNDU2IDQ1Ng=="
+                //        },
+                //        new LeftBase64EncodedBinaryEntity
+                //        {
+                //            Id = "789",
+                //            Data = "Nzg5IDc4OSA3ODkgNzg5IDc4OQ=="
+                //        },
+                //    };
 
-                context.LeftBase64EncodedBinary.AddRange(list);
-                context.SaveChanges();
+                //    context.LeftBase64EncodedBinary.AddRange(list);
+                //    context.SaveChanges();
+                //}
             }
         }
 

@@ -23,7 +23,7 @@ namespace Diff.ApplicationCore.Services
         public async Task<DifferenceResponse> Get(string id)
         {
             var leftBase64EncodedBinary = await LeftBase64EncodedBinaryRepository.Get(id);
-            var rightBase64EncodedBinary = await LeftBase64EncodedBinaryRepository.Get(id);
+            var rightBase64EncodedBinary = await RightBase64EncodedBinaryRepository.Get(id);
 
             if (leftBase64EncodedBinary == null || rightBase64EncodedBinary == null)
                 return null;
@@ -62,7 +62,7 @@ namespace Diff.ApplicationCore.Services
                 }
             }
 
-            var differenceDetail = new DifferenceDetail(offsets.Count, offsets);
+            var differenceDetail = new DifferenceDetail(leftBase64EncodedBinary.Length, offsets.Count, offsets);
 
             return differenceDetail;
         }
