@@ -1,5 +1,3 @@
-# Diff
-
 ## The assignment
 • Provide 2 http endpoints that accepts JSON base64 encoded binary data on both Endpoints:
 ```
@@ -17,10 +15,10 @@
 - Make assumptions in the implementation explicit, choices are good but need to be communicated
 
 ### Must haves
-• Solution written in C#
-• Internal logic shall be under unit test
-• Functionality shall be under integration test • Documentation in code
-• Clear and to the point readme on usage
+- Solution written in C#
+- Internal logic shall be under unit test
+- Functionality shall be under integration test • Documentation in code
+- Clear and to the point readme on usage
 
 ### Nice to haves
 • Suggestions for improvement
