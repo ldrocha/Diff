@@ -22,3 +22,53 @@
 
 ### Nice to haves
 • Suggestions for improvement
+
+# Diff Solution
+
+The solution was developed in .Net 6 C# https://dotnet.microsoft.com/en-us/download/dotnet/6.0
+
+Once running, it can be accessed at https://localhost:7185/swagger/index.html, in this page is the documentation and it's possible to send requests.
+
+## Using
+
+The 2 http endpoints that accepts JSON base64 encoded binary data are:
+
+```
+curl -X 'PUT' \
+  'https://localhost:7185/v1/diff/11/left' \
+  -H 'accept: text/plain' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "data": "aGVsbG8gd29ybGQgISEh"
+}'
+
+RESPONSE
+[201] Created
+{
+  "id": "11",
+  "data": "aGVsbG8gd29ybGQgISEh"
+}
+
+[400] Bad Request
+Bad Request status will be retuned when the string is not a valid base64 encoded binary
+```
+
+```
+curl -X 'PUT' \
+  'https://localhost:7185/v1/diff/11/right' \
+  -H 'accept: text/plain' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "data": "aGVsbG8gd29ybGQgISEh"
+}'
+
+RESPONSE
+[201] Created
+{
+  "id": "11",
+  "data": "aGVsbG8gd29ybGQgISEh"
+}
+
+[400] Bad Request
+Bad Request status will be retuned when the string is not a valid base64 encoded binary
+```
