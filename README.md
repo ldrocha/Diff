@@ -137,6 +137,7 @@ Not Found status will be return when one or both items compared do not exist
 
 - Switch from InMemoryDatabase to a traditional database
 - Implement cache
+- Persist the result of the difference
 - Containerize the application with Docker
 - Use a separeted context for automated tests
 - Separate the domain
