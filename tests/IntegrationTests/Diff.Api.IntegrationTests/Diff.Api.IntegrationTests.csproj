@@ -25,4 +25,10 @@
     <ProjectReference Include="..\..\Helpers\Diff.Helpers.AutoData\Diff.Helpers.AutoData.csproj" />
     <ProjectReference Include="..\..\..\src\Diff.Api\Diff.Api.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Controllers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
 </Project>

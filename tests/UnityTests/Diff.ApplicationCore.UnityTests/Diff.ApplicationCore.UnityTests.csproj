@@ -25,4 +25,12 @@
     <ProjectReference Include="..\..\..\src\Diff.ApplicationCore\Diff.ApplicationCore.csproj" />
     <ProjectReference Include="..\..\Helpers\Diff.Helpers.AutoData\Diff.Helpers.AutoData.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Services\" />
+    <None Remove="AutoMapper\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="AutoMapper\" />
+  </ItemGroup>
 </Project>

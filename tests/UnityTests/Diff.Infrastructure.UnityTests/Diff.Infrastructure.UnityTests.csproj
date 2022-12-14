@@ -25,4 +25,10 @@
     <ProjectReference Include="..\..\..\src\Diff.Infrastructure\Diff.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Helpers\Diff.Helpers.AutoData\Diff.Helpers.AutoData.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Repositories\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repositories\" />
+  </ItemGroup>
 </Project>
