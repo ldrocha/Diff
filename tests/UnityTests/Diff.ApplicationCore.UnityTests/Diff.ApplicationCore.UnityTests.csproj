@@ -19,6 +19,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="AutoFixture.Idioms" Version="4.17.0" />
+    <PackageReference Include="FluentAssertions" Version="6.8.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +30,8 @@
   <ItemGroup>
     <None Remove="Services\" />
     <None Remove="AutoMapper\" />
+    <None Remove="AutoFixture.Idioms" />
+    <None Remove="FluentAssertions" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />

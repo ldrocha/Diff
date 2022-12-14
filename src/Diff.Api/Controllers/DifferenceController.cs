@@ -10,20 +10,17 @@ namespace Diff.Api.Controllers;
 [ApiVersion("1")]
 [ApiController]
 [Route("/v{version:apiVersion}/diff/{id}")]
-public class DiffController : ControllerBase
+public class DifferenceController : ControllerBase
 {
-    public ILogger<DiffController> Logger { get; }
     public IDifferenceService DifferenceService { get; }
     public ILeftBase64EncodedBinaryService LeftBase64EncodedBinaryService  { get;}
     public IRightBase64EncodedBinaryService RightBase64EncodedBinaryService { get; }
 
-    public DiffController(
-        ILogger<DiffController> logger,
+    public DifferenceController(
         IDifferenceService differenceService,
         ILeftBase64EncodedBinaryService leftBase64EncodedBinaryService,
         IRightBase64EncodedBinaryService rightBase64EncodedBinaryService)
     {
-        Logger = logger ?? throw new ArgumentNullException(nameof(logger));
         DifferenceService = differenceService ?? throw new ArgumentNullException(nameof(differenceService));
         LeftBase64EncodedBinaryService = leftBase64EncodedBinaryService ?? throw new ArgumentNullException(nameof(leftBase64EncodedBinaryService));
         RightBase64EncodedBinaryService = rightBase64EncodedBinaryService ?? throw new ArgumentNullException(nameof(rightBase64EncodedBinaryService));

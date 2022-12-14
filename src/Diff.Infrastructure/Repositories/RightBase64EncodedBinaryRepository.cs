@@ -13,30 +13,6 @@ namespace Diff.Infrastructure.Repositories
              using (var context = new DiffDbContext())
             {
                 context.Database.EnsureCreated();
-                //if (!context.RightBase64EncodedBinary.Any())
-                //{
-                //    var list = new List<RightBase64EncodedBinaryEntity>
-                //    {
-                //        new RightBase64EncodedBinaryEntity
-                //        {
-                //            Id = "123",
-                //            Data = "MTIzIDEyMyAxMjMgMTIzIDEyMw=="
-                //        },
-                //        new RightBase64EncodedBinaryEntity
-                //        {
-                //            Id = "456",
-                //            Data = "NDU2IDQ1NiA0NTYgNDU2IA=="
-                //        },
-                //        new RightBase64EncodedBinaryEntity
-                //        {
-                //            Id = "789",
-                //            Data = "Nzg5IDc4OSAwMDAgNzg5IDAwMA=="
-                //        },
-                //    };
-
-                //    context.RightBase64EncodedBinary.AddRange(list);
-                //    context.SaveChanges();
-                //}
             }
         }
 
