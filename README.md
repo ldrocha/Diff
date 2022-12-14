@@ -139,3 +139,4 @@ Not Found status will be return when one or both items compared do not exist
 - Implement cache
 - Containerize the application with Docker
 - Use a separeted context for automated tests
+- Separate the domain
