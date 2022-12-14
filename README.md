@@ -116,3 +116,8 @@ RESPONSE
 [404] Not Found
 Not Found status will be return when one or both items compared do not exist
 ```
+## Suggestions for improvement
+
+- Switch from InMemoryDatabase to a traditional database
+- Implement cache
+- Containerize the application with Docker
