@@ -16,8 +16,8 @@ namespace Diff.Infrastructure.Context
             optionsBuilder.UseInMemoryDatabase(databaseName: "DiffDb");
         }
 
-        public DbSet<LeftBase64EncodedBinary> LeftBase64EncodedBinary { get; set; }
-        public DbSet<RightBase64EncodedBinary> RightBase64EncodedBinary { get; set; }
+        public DbSet<LeftBase64EncodedBinaryEntity> LeftBase64EncodedBinary { get; set; }
+        public DbSet<RightBase64EncodedBinaryEntity> RightBase64EncodedBinary { get; set; }
     }
 }
 

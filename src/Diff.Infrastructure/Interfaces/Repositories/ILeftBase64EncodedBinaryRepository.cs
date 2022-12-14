@@ -6,9 +6,9 @@ namespace Diff.Infrastructure.Interfaces.Repositories
 {
 	public interface ILeftBase64EncodedBinaryRepository
 	{
-		Task<LeftBase64EncodedBinary> Get(string id);
+		Task<LeftBase64EncodedBinaryEntity> Get(string id);
 
-		Task AddOrUpdate(LeftBase64EncodedBinary entity);
+		Task AddOrUpdate(LeftBase64EncodedBinaryEntity entity);
 	}
 }
 

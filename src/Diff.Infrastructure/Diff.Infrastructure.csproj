@@ -13,6 +13,7 @@
     <None Remove="Microsoft.EntityFrameworkCore.InMemory" />
     <None Remove="Interfaces\" />
     <None Remove="Interfaces\Repositories\" />
+    <None Remove="Entities\LeftBase64EncodedBinary.Entitycs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />

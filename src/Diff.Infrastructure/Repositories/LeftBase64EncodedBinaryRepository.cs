@@ -12,19 +12,19 @@ namespace Diff.Infrastructure.Repositories
         {
             using (var context = new DiffDbContext())
             {
-                var list = new List<LeftBase64EncodedBinary>
+                var list = new List<LeftBase64EncodedBinaryEntity>
                 {
-                    new LeftBase64EncodedBinary
+                    new LeftBase64EncodedBinaryEntity
                     {
                         Id = "123",
                         Data = "MTIzIDEyMyAxMjMgMTIzIDEyMw=="
                     },
-                    new LeftBase64EncodedBinary
+                    new LeftBase64EncodedBinaryEntity
                     {
                         Id = "456",
                         Data = "NDU2IDQ1NiA0NTYgNDU2IDQ1Ng=="
                     },
-                    new LeftBase64EncodedBinary
+                    new LeftBase64EncodedBinaryEntity
                     {
                         Id = "456",
                         Data = "Nzg5IDc4OSA3ODkgNzg5IDc4OQ=="
@@ -36,7 +36,7 @@ namespace Diff.Infrastructure.Repositories
             }
         }
 
-        public async Task<LeftBase64EncodedBinary> Get(string id)
+        public async Task<LeftBase64EncodedBinaryEntity> Get(string id)
         {
             using (var context = new DiffDbContext())
             {
@@ -47,7 +47,7 @@ namespace Diff.Infrastructure.Repositories
             }
         }
 
-        public async Task AddOrUpdate(LeftBase64EncodedBinary entity)
+        public async Task AddOrUpdate(LeftBase64EncodedBinaryEntity entity)
         {
             using (var context = new DiffDbContext())
             {

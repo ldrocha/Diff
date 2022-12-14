@@ -13,6 +13,8 @@
     <None Remove="Interfaces\" />
     <None Remove="Interfaces\Service\" />
     <None Remove="Services\" />
+    <None Remove="AutoMapper" />
+    <None Remove="AutoMapper\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Requests\" />
@@ -20,8 +22,12 @@
     <Folder Include="Enums\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Services\" />
+    <Folder Include="AutoMapper\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Diff.Infrastructure\Diff.Infrastructure.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.0" />
   </ItemGroup>
 </Project>

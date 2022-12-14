@@ -1,5 +1,10 @@
 ﻿using System.Reflection;
 using System.Text.Json.Serialization;
+using Diff.ApplicationCore.AutoMapper;
+using Diff.ApplicationCore.Interfaces.Services;
+using Diff.ApplicationCore.Services;
+using Diff.Infrastructure.Interfaces.Repositories;
+using Diff.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.OpenApi.Models;
 
@@ -25,7 +30,7 @@ builder.Services.AddSwaggerGen(options =>
     {
         Version = "v1",
         Title = "Diff API",
-        Description = "Diff API is C# .NET 6 for the Paybyrd Assignment (Base64 Encoded Binary Differences)",
+        Description = "Diff a .NET 6 C# Rest API for the Paybyrd Assignment (Base64 Encoded Binary Differences)",
         Contact = new OpenApiContact
         {
             Name = "Lorena Rocha",
@@ -37,6 +42,18 @@ builder.Services.AddSwaggerGen(options =>
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 });
+
+builder.Services.AddAutoMapper(typeof(RequestToEntityProfile), typeof(EntityToResponseProfile));
+
+builder.Services.AddScoped<IDifferenceService, DifferenceService>();
+builder.Services.AddScoped<ILeftBase64EncodedBinaryService, LeftBase64EncodedBinaryService>();
+builder.Services.AddScoped<IRightBase64EncodedBinaryService, RightBase64EncodedBinaryService>();
+builder.Services.AddScoped<ILeftBase64EncodedBinaryRepository, LeftBase64EncodedBinaryRepository>();
+builder.Services.AddScoped<IRightBase64EncodedBinaryRepository, RightBase64EncodedBinaryRepository>();
+
+
+
+
 
 var app = builder.Build();
 
