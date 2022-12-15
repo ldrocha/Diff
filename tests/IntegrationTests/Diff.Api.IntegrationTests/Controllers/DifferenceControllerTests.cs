@@ -52,6 +52,23 @@ namespace Diff.Api.IntegrationTests.Controllers
             responseBody?.Status.Should().Be(status);
         }
 
+        [Fact]
+        public async Task Get_WhenStatusSameLenght_ShouldReturnDetails()
+        {
+            var id = "789";
+            var status = DifferenceStatus.SameLength;
+            var detail = new DifferenceDetail(28, 6, new List<int> { 8, 9, 10, 16, 17, 18 });
+
+            var response = await _client.GetAsync($"/v1/diff/{id}");
+
+            var responseBody = await response.Content.ReadFromJsonAsync<DifferenceResponse>();
+
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+            responseBody?.Id.Should().Be(id);
+            responseBody?.Status.Should().Be(status);
+            responseBody?.Detail.Should().BeEquivalentTo(detail);
+        }
+
         [Theory]
         [InlineData("111")]
         [InlineData("222")]

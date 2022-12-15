@@ -80,7 +80,7 @@ namespace Diff.ApplicationCore.UnityTests.Services
             var leftEntity = new LeftBase64EncodedBinaryEntity { Id = id, Data = "Nzg5IDc4OSA3ODkgNzg5IDc4OQ=="};
             var rightEntity = new RightBase64EncodedBinaryEntity { Id = id, Data = "Nzg5IDc4OSAwMDAgNzg5IDAwMA==" };
             var status = DifferenceStatus.SameLength;
-            var differenceDetail = new DifferenceDetail(leftEntity.Data.Length, 6, new List<int> { 8, 9, 10, 16, 17, 18});
+            var detail = new DifferenceDetail(leftEntity.Data.Length, 6, new List<int> { 8, 9, 10, 16, 17, 18});
             
             sut.LeftBase64EncodedBinaryRepository.Get(id).Returns(leftEntity);
             sut.RightBase64EncodedBinaryRepository.Get(id).Returns(rightEntity);
@@ -91,7 +91,7 @@ namespace Diff.ApplicationCore.UnityTests.Services
             await sut.RightBase64EncodedBinaryRepository.Received(1).Get(id);
             result.Id.Should().Be(id);
             result.Status.Should().Be(status);
-            result.Detail.Should().BeEquivalentTo(differenceDetail);
+            result.Detail.Should().BeEquivalentTo(detail);
         }
     }
 }

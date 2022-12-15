@@ -113,7 +113,7 @@ public class DifferenceController : ControllerBase
         [FromBody] LeftBase64EncodedBinaryRequest leftBase64EncodedBinaryRequest)
     {
         if (!IsBase64String(leftBase64EncodedBinaryRequest.Data))
-            return BadRequest("Invalid base64 encoded binary");
+            return BadRequest("Invalid base64 encoded binary string");
 
         leftBase64EncodedBinaryRequest.Id = id;
 
@@ -147,7 +147,7 @@ public class DifferenceController : ControllerBase
         [FromBody] RightBase64EncodedBinaryRequest rightBase64EncodedBinaryRequest)
     {
         if (!IsBase64String(rightBase64EncodedBinaryRequest.Data))
-            return BadRequest("Invalid base64 encoded binary");
+            return BadRequest("Invalid base64 encoded binary string");
 
         rightBase64EncodedBinaryRequest.Id = id;
 
@@ -160,7 +160,7 @@ public class DifferenceController : ControllerBase
         return CreatedAtAction(actionName, routeValues, response);
     }
 
-    public static bool IsBase64String(string base64)
+    private static bool IsBase64String(string base64)
     {
         Span<byte> buffer = new Span<byte>(new byte[base64.Length]);
         return Convert.TryFromBase64String(base64, buffer, out int bytesParsed);
