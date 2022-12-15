@@ -28,7 +28,7 @@ namespace Diff.ApplicationCore.UnityTests.Services
         }
 
         [Theory, AutoNSubstituteData]
-        public async Task AddOrUpdate_ShouldCallRepositoryAndReturnResponse_WhenExecuted(
+        public async Task AddOrUpdate_WhenExecuted_ShouldCallRepositoryAndReturnResponse(
             LeftBase64EncodedBinaryRequest request,
             LeftBase64EncodedBinaryEntity entity,
             LeftBase64EncodedBinaryResponse response,
@@ -49,7 +49,7 @@ namespace Diff.ApplicationCore.UnityTests.Services
         }
 
         [Theory, AutoNSubstituteData]
-        public async Task WhenExecutedGet_ShouldCallRepositoryAndReturnResponse_WhenExecuted(
+        public async Task WhenExecutedGet_WhenExecuted_ShouldCallRepositoryAndReturnResponse(
             string id,
             LeftBase64EncodedBinaryEntity entity,
             LeftBase64EncodedBinaryResponse response,

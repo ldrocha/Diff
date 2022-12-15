@@ -28,7 +28,7 @@ namespace Diff.ApplicationCore.UnityTests.Services
         [Theory]
         [InlineAutoNSubstituteData("123", null)]
         [InlineAutoNSubstituteData("456", null, null)]
-        public async Task Get_ShoulReturnNull_WhenDataToCompareIsNull(
+        public async Task Get_WhenDataToCompareIsNull_ShoulReturnNull(
             string id,
             LeftBase64EncodedBinaryEntity leftEntity,
             RightBase64EncodedBinaryEntity rightEntity,
@@ -49,7 +49,7 @@ namespace Diff.ApplicationCore.UnityTests.Services
         [InlineAutoNSubstituteData("123", "MTIzIDEyMyAxMjMgMTIzIDEyMw==", "MTIzIDEyMyAxMjMgMTIzIDEyMw==", DifferenceStatus.Equal)]
         [InlineAutoNSubstituteData("456", "NDU2IDQ1NiA0NTYgNDU2IDQ1Ng==", "NDU2IDQ1NiA0NTYgNDU2IA==", DifferenceStatus.DifferentLength)]
         [InlineAutoNSubstituteData("789", "Nzg5IDc4OSA3ODkgNzg5IDc4OQ==", "Nzg5IDc4OSAwMDAgNzg5IDAwMA==", DifferenceStatus.SameLength)]
-        public async Task Get_ShouldReturnCorrectDifferenceResponse_WhenExecuted(
+        public async Task Get_WhenExecuted_ShouldReturnCorrectResponse(
             string id,
             string leftData,
             string rightData,
@@ -73,7 +73,7 @@ namespace Diff.ApplicationCore.UnityTests.Services
 
         [Theory]
         [AutoNSubstituteData]
-        public async Task Get_ShouldReturnSetDifferenceDetail_WhenStatusIsSameLenght(
+        public async Task Get_WhenStatusIsSameLenght_ShouldReturnResponseWithDetail(
         string id,
         DifferenceService sut)
         {
