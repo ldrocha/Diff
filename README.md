@@ -17,7 +17,8 @@
 ### Must haves
 - Solution written in C#
 - Internal logic shall be under unit test
-- Functionality shall be under integration test • Documentation in code
+- Functionality shall be under integration test 
+- Documentation in code
 - Clear and to the point readme on usage
 
 ### Nice to haves
