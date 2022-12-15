@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace Diff.ApplicationCore.Responses
+﻿namespace Diff.ApplicationCore.Responses
 
 {
-	public class LeftBase64EncodedBinaryResponse
+    public class LeftBase64EncodedBinaryResponse
     {
         public string Id { get; set; } = default!;
         public string Data { get; set; } = default!;

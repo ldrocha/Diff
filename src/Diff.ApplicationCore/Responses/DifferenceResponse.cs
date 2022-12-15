@@ -1,12 +1,9 @@
-﻿using System;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 using Diff.ApplicationCore.Enums;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 
 namespace Diff.ApplicationCore.Responses
 {
-	public class DifferenceResponse
+    public class DifferenceResponse
 	{
         public string Id { get; set; } = default!;
         [JsonConverter(typeof(JsonStringEnumConverter))]

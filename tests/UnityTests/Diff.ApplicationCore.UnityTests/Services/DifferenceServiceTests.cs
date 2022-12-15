@@ -1,5 +1,4 @@
-﻿using System;
-using AutoFixture.Idioms;
+﻿using AutoFixture.Idioms;
 using Diff.ApplicationCore.Enums;
 using Diff.ApplicationCore.Interfaces.Services;
 using Diff.ApplicationCore.Responses;
@@ -11,7 +10,7 @@ using NSubstitute;
 
 namespace Diff.ApplicationCore.UnityTests.Services
 {
-	public class DifferenceServiceTests
+    public class DifferenceServiceTests
 	{
         [Theory, AutoNSubstituteData]
         public void Constructor_HasNullGuards(GuardClauseAssertion assertion)

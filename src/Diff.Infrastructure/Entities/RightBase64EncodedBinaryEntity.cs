@@ -1,10 +1,9 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Diff.Infrastructure.Entities
 {
-	public class RightBase64EncodedBinaryEntity
+    public class RightBase64EncodedBinaryEntity
 	{
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

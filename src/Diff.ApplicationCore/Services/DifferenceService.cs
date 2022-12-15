@@ -1,13 +1,11 @@
-﻿using System;
-using Diff.ApplicationCore.Enums;
+﻿using Diff.ApplicationCore.Enums;
 using Diff.ApplicationCore.Interfaces.Services;
 using Diff.ApplicationCore.Responses;
 using Diff.Infrastructure.Interfaces.Repositories;
 
-
 namespace Diff.ApplicationCore.Services
 {
-	public class DifferenceService : IDifferenceService
+    public class DifferenceService : IDifferenceService
     {
         public ILeftBase64EncodedBinaryRepository LeftBase64EncodedBinaryRepository { get; }
         public IRightBase64EncodedBinaryRepository RightBase64EncodedBinaryRepository { get; }

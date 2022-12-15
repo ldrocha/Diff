@@ -1,8 +1,6 @@
-﻿using System;
-using Diff.ApplicationCore.Interfaces.Services;
+﻿using Diff.ApplicationCore.Interfaces.Services;
 using Diff.ApplicationCore.Requests;
 using Diff.ApplicationCore.Responses;
-using Diff.Infrastructure.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Diff.Api.Controllers;

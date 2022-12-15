@@ -1,11 +1,10 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace Diff.ApplicationCore.Requests
 
 {
-	public class RightBase64EncodedBinaryRequest
+    public class RightBase64EncodedBinaryRequest
     {
         [JsonIgnore]
         public string Id { get; set; } = default!;

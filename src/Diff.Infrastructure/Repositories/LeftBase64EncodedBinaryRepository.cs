@@ -1,12 +1,11 @@
-﻿using System;
-using Diff.Infrastructure.Context;
+﻿using Diff.Infrastructure.Context;
 using Diff.Infrastructure.Entities;
 using Diff.Infrastructure.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Diff.Infrastructure.Repositories
 {
-	public class LeftBase64EncodedBinaryRepository : ILeftBase64EncodedBinaryRepository
+    public class LeftBase64EncodedBinaryRepository : ILeftBase64EncodedBinaryRepository
     {
         public LeftBase64EncodedBinaryRepository()
         {

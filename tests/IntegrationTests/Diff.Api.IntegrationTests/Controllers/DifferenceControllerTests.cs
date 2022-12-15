@@ -1,21 +1,14 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http.Json;
-using System.Text.Json;
 using Diff.ApplicationCore.Enums;
 using Diff.ApplicationCore.Requests;
 using Diff.ApplicationCore.Responses;
-using Diff.ApplicationCore.Services;
-using Diff.Helpers.AutoData;
-using Diff.Infrastructure.Entities;
 using FluentAssertions;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
 
 namespace Diff.Api.IntegrationTests.Controllers
 {
-	public class DifferenceControllerTests : IClassFixture<WebApplicationFactory<Program>>
+    public class DifferenceControllerTests : IClassFixture<WebApplicationFactory<Program>>
     {
         private readonly WebApplicationFactory<Program> _factory;
         private readonly HttpClient _client;
@@ -53,7 +46,7 @@ namespace Diff.Api.IntegrationTests.Controllers
         }
 
         [Fact]
-        public async Task Get_WhenStatusSameLenght_ShouldReturnDetails()
+        public async Task Get_WhenStatusIsSameLenght_ShouldReturnDetails()
         {
             var id = "789";
             var status = DifferenceStatus.SameLength;

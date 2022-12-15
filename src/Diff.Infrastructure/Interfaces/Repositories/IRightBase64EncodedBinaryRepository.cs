@@ -1,9 +1,8 @@
-﻿using System;
-using Diff.Infrastructure.Entities;
+﻿using Diff.Infrastructure.Entities;
 
 namespace Diff.Infrastructure.Interfaces.Repositories
 {
-	public interface IRightBase64EncodedBinaryRepository
+    public interface IRightBase64EncodedBinaryRepository
 	{
         Task<RightBase64EncodedBinaryEntity> Get(string id);
 

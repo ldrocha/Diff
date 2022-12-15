@@ -1,12 +1,11 @@
-﻿using System;
-using Diff.Infrastructure.Context;
+﻿using Diff.Infrastructure.Context;
 using Diff.Infrastructure.Entities;
 using Diff.Infrastructure.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Diff.Infrastructure.Repositories
 {
-	public class RightBase64EncodedBinaryRepository : IRightBase64EncodedBinaryRepository
+    public class RightBase64EncodedBinaryRepository : IRightBase64EncodedBinaryRepository
     {
 		public RightBase64EncodedBinaryRepository()
 		{

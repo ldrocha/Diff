@@ -1,11 +1,10 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using Diff.ApplicationCore.Responses;
 using Diff.Infrastructure.Entities;
 
 namespace Diff.ApplicationCore.AutoMapper
 {
-	public class EntityToResponseProfile : Profile
+    public class EntityToResponseProfile : Profile
     {
 		public EntityToResponseProfile()
 		{

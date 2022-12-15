@@ -1,12 +1,11 @@
-﻿using System;
-using AutoFixture.Idioms;
+﻿using AutoFixture.Idioms;
 using Diff.Helpers.AutoData;
 using Diff.Infrastructure.Interfaces.Repositories;
 using Diff.Infrastructure.Repositories;
 
 namespace Diff.Infrastructure.UnityTests.Repositories
 {
-	public class LeftBase64EncodedBinaryRepositoryTests
+    public class LeftBase64EncodedBinaryRepositoryTests
 	{
         [Theory, AutoNSubstituteData]
         public void Constructor_HasNullGuards(GuardClauseAssertion assertion)

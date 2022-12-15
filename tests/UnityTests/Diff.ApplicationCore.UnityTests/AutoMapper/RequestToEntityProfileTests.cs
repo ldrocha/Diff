@@ -1,5 +1,4 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using Diff.ApplicationCore.Requests;
 using Diff.Helpers.AutoData;
 using Diff.Infrastructure.Entities;
@@ -7,7 +6,7 @@ using FluentAssertions;
 
 namespace Diff.ApplicationCore.UnityTests.AutoMapper
 {
-	public class RequestToEntityProfileTests
+    public class RequestToEntityProfileTests
 	{
         private MapperConfiguration _configuration;
 

@@ -1,13 +1,10 @@
-﻿using System;
-using AutoFixture.Idioms;
-using AutoMapper;
+﻿using AutoFixture.Idioms;
 using Diff.ApplicationCore.Interfaces.Services;
 using Diff.ApplicationCore.Requests;
 using Diff.ApplicationCore.Responses;
 using Diff.ApplicationCore.Services;
 using Diff.Helpers.AutoData;
 using Diff.Infrastructure.Entities;
-using Diff.Infrastructure.Repositories;
 using FluentAssertions;
 using NSubstitute;
 

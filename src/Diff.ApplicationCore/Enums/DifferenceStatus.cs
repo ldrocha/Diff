@@ -1,5 +1,4 @@
-﻿using System;
-namespace Diff.ApplicationCore.Enums
+﻿namespace Diff.ApplicationCore.Enums
 {
     public enum DifferenceStatus
     {

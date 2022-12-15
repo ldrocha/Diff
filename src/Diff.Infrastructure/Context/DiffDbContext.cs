@@ -1,10 +1,9 @@
-﻿using System;
-using Diff.Infrastructure.Entities;
+﻿using Diff.Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Diff.Infrastructure.Context
 {
-	public class DiffDbContext : DbContext
+    public class DiffDbContext : DbContext
 	{
         public DbSet<LeftBase64EncodedBinaryEntity> LeftBase64EncodedBinary { get; set; }
         public DbSet<RightBase64EncodedBinaryEntity> RightBase64EncodedBinary { get; set; }

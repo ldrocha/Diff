@@ -1,15 +1,13 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using Diff.ApplicationCore.Interfaces.Services;
 using Diff.ApplicationCore.Requests;
 using Diff.ApplicationCore.Responses;
 using Diff.Infrastructure.Entities;
 using Diff.Infrastructure.Interfaces.Repositories;
-using Diff.Infrastructure.Repositories;
 
 namespace Diff.ApplicationCore.Services
 {
-	public class RightBase64EncodedBinaryService : IRightBase64EncodedBinaryService
+    public class RightBase64EncodedBinaryService : IRightBase64EncodedBinaryService
     {
         public IMapper Mapper { get; set; }
         public IRightBase64EncodedBinaryRepository RightBase64EncodedBinaryRepository { get; }
