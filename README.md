@@ -154,5 +154,5 @@ Not Found status will be return when one or both items compared do not exist
 - Implement cache
 - Persist the result of the difference
 - Containerize the application with Docker
-- Use a separeted context for automated tests
+- Use a separeted context for the tests
 - Separate the domain
