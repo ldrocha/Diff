@@ -1,6 +1,7 @@
 ﻿using System;
 using AutoFixture.Idioms;
 using Diff.Helpers.AutoData;
+using Diff.Infrastructure.Entities;
 using Diff.Infrastructure.Interfaces.Repositories;
 using Diff.Infrastructure.Repositories;
 

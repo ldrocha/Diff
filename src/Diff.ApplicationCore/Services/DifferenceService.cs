@@ -48,7 +48,7 @@ namespace Diff.ApplicationCore.Services
             return differenceResponse;
         }
 
-        public DifferenceDetail GetDifferenceDetail(string leftBase64EncodedBinary, string rightBase64EncodedBinary)
+        private DifferenceDetail GetDifferenceDetail(string leftBase64EncodedBinary, string rightBase64EncodedBinary)
         {
             byte[] left = Convert.FromBase64String(leftBase64EncodedBinary);
             byte[] right = Convert.FromBase64String(rightBase64EncodedBinary);
